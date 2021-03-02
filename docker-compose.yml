@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  pg:
+    image: postgres
+    volumes:
+      - NamedVolume:/var/lib/postgres/data
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    ports:
+        - 80:80
+        - 443:443
+    volumes:
+        - ./docker/pgadmin4:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "root"
+      PGADMIN_DEFAULT_PASSWORD: "root"
+    depends_on:
+      - pg
+    restart: always
+
+volumes:
+  NamedVolume:
