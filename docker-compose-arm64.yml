@@ -17,6 +17,7 @@ services:
   pgadmin4:
     image: dpage/pgadmin4:2021-04-19-1
     restart: always
+    user: "${UID}:${GID}"
     depends_on:
       - pg
     links:
