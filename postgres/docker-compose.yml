@@ -7,7 +7,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - NamedVolume:/var/lib/postgres/data
+      - PostgresVolume:/var/lib/postgres/data
       - ./init:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
@@ -40,4 +40,4 @@ services:
       - 8000:8080
 
 volumes:
-  NamedVolume:
+  PostgresVolume:
