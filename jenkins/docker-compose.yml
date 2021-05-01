@@ -2,13 +2,15 @@ version: "3.7"
 
 services:
   jenkins:
-    image: jenkins
+    image: jenkins:2.60.3-alpine
     restart: always
     ports:
       - 8080:8080
       - 50000:50000
-    volumes:
-      - JenkinsVolume:/var/jenkins_home
+        #volumes:
+        #      - JenkinsVolume:/var/jenkins_home
+    environment:
+      TZ: "Asia/Tokyo" 
 
 volumes:
   JenkinsVolume:
