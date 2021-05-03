@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  gitbucket:
+    image: gitbucket/gitbucket
+    restart: always
+    ports:
+      - 8000:8000 
+      - 29418:29418 
+    volumes:
+      - GitBucketVolume:/gitbucket
+    environment:
+      GITBUCKET_MAXFILESIZE: 104857600
+      TZ: "Asia/Tokyo" 
+
+volumes:
+  GitBucketVolume:
+
