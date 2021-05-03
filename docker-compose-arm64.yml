@@ -9,6 +9,7 @@ services:
     volumes:
       - NamedVolume:/var/lib/postgres/data
       - ./init:/docker-entrypoint-initdb.d
+    command: postgres -c log_destination=stderr -c log_statement=all -c log_connections=on -c log_disconnections=on
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
       POSTGRES_USER: ${POSTGRES_USER}
